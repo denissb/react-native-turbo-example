@@ -21,6 +21,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Result from example package: {result}</Text>
+      <View style={styles.spacer} />
       <Button title="Hello from built in TurboModule" onPress={showGreeting} />
     </View>
   );
@@ -37,4 +38,7 @@ const styles = StyleSheet.create({
     height: 60,
     marginVertical: 20,
   },
+  spacer: {
+    margin: 10,
+  }
 });
