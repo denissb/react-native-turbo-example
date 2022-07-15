@@ -1,7 +1,12 @@
 package com.example.reactnativeturboexample.newarchitecture;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
+
+import com.example.reactnativeturboexample.BuildConfig;
+import com.example.reactnativeturboexample.newarchitecture.components.MainComponentsRegistry;
+import com.example.reactnativeturboexample.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -13,17 +18,22 @@ import com.facebook.react.bridge.JSIModuleSpec;
 import com.facebook.react.bridge.JSIModuleType;
 import com.facebook.react.bridge.JavaScriptContextHolder;
 import com.facebook.react.bridge.ReactApplicationContext;
+import  com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.UIManager;
 import com.facebook.react.fabric.ComponentFactory;
 import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.example.reactnativeturboexample.BuildConfig;
-import com.example.reactnativeturboexample.newarchitecture.components.MainComponentsRegistry;
-import com.example.reactnativeturboexample.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.facebook.react.module.model.ReactModuleInfo;
+import com.facebook.react.module.model.ReactModuleInfoProvider;
+import com.facebook.react.TurboReactPackage;
+
+import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
@@ -51,6 +61,40 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
     //     packages.add(new TurboReactPackage() { ... });
     // If you have custom Fabric Components, their ViewManagers should also be loaded here
     // inside a ReactPackage.
+
+    packages.add(new TurboReactPackage() {
+      @Nullable
+      @Override
+      public NativeModule getModule(String name, ReactApplicationContext reactContext) {
+        if (name.equals(com.turbomoduleexampleproject.NativeExampleModuleImpl.NAME)) {
+          return new com.turbomoduleexampleproject.NativeExampleModuleImpl(reactContext);
+        }
+        return null;
+      }
+
+      @Override
+      public ReactModuleInfoProvider getReactModuleInfoProvider() {
+        return () -> {
+          final Map<String, ReactModuleInfo> moduleInfoMap = new HashMap<>();
+
+          moduleInfoMap.put(
+            com.turbomoduleexampleproject.NativeExampleModuleImpl.NAME,
+            new ReactModuleInfo(
+              com.turbomoduleexampleproject.NativeExampleModuleImpl.NAME,
+              com.turbomoduleexampleproject.NativeExampleModuleImpl.NAME,
+              false,
+              false,
+              true,
+              false,
+              true
+            )
+          );
+
+          return moduleInfoMap;
+        };
+      }
+    });
+
     return packages;
   }
 

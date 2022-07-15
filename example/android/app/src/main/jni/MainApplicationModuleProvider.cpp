@@ -2,6 +2,7 @@
 
 #include <rncore.h>
 #include <TurboExample.h>
+#include <AppSpec.h>
 
 namespace facebook {
 namespace react {
@@ -19,10 +20,16 @@ std::shared_ptr<TurboModule> MainApplicationModuleProvider(
   // }
   // return rncore_ModuleProvider(moduleName, params);
 
-  auto module = TurboExample_ModuleProvider(moduleName, params);
+  auto turboExampleModule = TurboExample_ModuleProvider(moduleName, params);
 
-  if (module != nullptr) {
-    return module;
+  if (turboExampleModule != nullptr) {
+    return turboExampleModule;
+  }
+
+  auto appSpecModule = AppSpec_ModuleProvider(moduleName, params);
+
+  if (appSpecModule != nullptr) {
+    return appSpecModule;
   }
 
   return rncore_ModuleProvider(moduleName, params);

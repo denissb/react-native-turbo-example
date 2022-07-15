@@ -1,18 +1,27 @@
-import * as React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Button, Alert } from 'react-native';
 
-import { StyleSheet, View, Text } from 'react-native';
 import { multiply } from 'react-native-turbo-example';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+import NativeExampleModule from '../jsi/NativeExampleModule'
 
-  React.useEffect(() => {
+export default function App() {
+  const [result, setResult] = useState<number | undefined>();
+
+  const showGreeting = useCallback(() => {
+    const message = NativeExampleModule.getGreeting('JSI');
+    Alert.alert(message);
+  });
+
+
+  useEffect(() => {
     multiply(3, 7).then(setResult);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result from example package: {result}</Text>
+      <Button title="Hello from built in TurboModule" onPress={showGreeting} />
     </View>
   );
 }
