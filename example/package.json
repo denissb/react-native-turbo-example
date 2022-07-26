@@ -21,5 +21,12 @@
     "metro-react-native-babel-preset": "^0.67.0",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0"
+  },
+  "codegenConfig": {
+    "libraries": [{
+      "name": "NativeExampleModule",
+      "type": "modules",
+      "jsSrcsDir": "./jsi"
+    }]
   }
 }

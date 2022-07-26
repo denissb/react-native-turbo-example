@@ -12,6 +12,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		ACF048FC2890086E0036FB9D /* NativeExampleModule-generated.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACF048FA2890086E0036FB9D /* NativeExampleModule-generated.mm */; };
+		ACF048FF2890095D0036FB9D /* RCTNativeExampleModule.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF048FE2890095D0036FB9D /* RCTNativeExampleModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,10 @@
 		5709B34CF0A7D63546082F79 /* Pods-TurboExampleExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboExampleExample.release.xcconfig"; path = "Target Support Files/Pods-TurboExampleExample/Pods-TurboExampleExample.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-TurboExampleExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboExampleExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TurboExampleExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ACF048FA2890086E0036FB9D /* NativeExampleModule-generated.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NativeExampleModule-generated.mm"; sourceTree = "<group>"; };
+		ACF048FB2890086E0036FB9D /* NativeExampleModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeExampleModule.h; sourceTree = "<group>"; };
+		ACF048FD289008A40036FB9D /* RCTNativeExampleModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeExampleModule.h; sourceTree = "<group>"; };
+		ACF048FE2890095D0036FB9D /* RCTNativeExampleModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTNativeExampleModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -43,6 +49,7 @@
 		13B07FAE1A68108700A75B9A /* TurboExampleExample */ = {
 			isa = PBXGroup;
 			children = (
+				ACF048F92890086E0036FB9D /* NativeExampleModule */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -91,6 +98,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		ACF048F92890086E0036FB9D /* NativeExampleModule */ = {
+			isa = PBXGroup;
+			children = (
+				ACF048FA2890086E0036FB9D /* NativeExampleModule-generated.mm */,
+				ACF048FB2890086E0036FB9D /* NativeExampleModule.h */,
+				ACF048FD289008A40036FB9D /* RCTNativeExampleModule.h */,
+				ACF048FE2890095D0036FB9D /* RCTNativeExampleModule.m */,
+			);
+			name = NativeExampleModule;
+			path = build/generated/ios/NativeExampleModule;
+			sourceTree = "<group>";
+		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,10 +152,6 @@
 			attributes = {
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
-					00E356ED1AD99517003FC87E = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 13B07F861A680F5B00A75B9A;
-					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
 					};
@@ -269,6 +284,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF048FC2890086E0036FB9D /* NativeExampleModule-generated.mm in Sources */,
+				ACF048FF2890095D0036FB9D /* RCTNativeExampleModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -295,7 +312,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.reactnativeturboexample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativeturboexample;
 				PRODUCT_NAME = TurboExampleExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -320,7 +337,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.reactnativeturboexample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativeturboexample;
 				PRODUCT_NAME = TurboExampleExample;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
