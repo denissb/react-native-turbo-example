@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Button, Alert } from 'react-native';
 
 import { multiply } from 'react-native-turbo-example';
 
-import NativeExampleModule from '../jsi/NativeExampleModule'
+import NativeExampleModule from '../jsi/NativeExampleModule';
 
 export default function App() {
   const [result, setResult] = useState<number | undefined>();
@@ -11,8 +11,7 @@ export default function App() {
   const showGreeting = useCallback(() => {
     const message = NativeExampleModule.getGreeting('JSI');
     Alert.alert(message);
-  });
-
+  }, []);
 
   useEffect(() => {
     multiply(3, 7).then(setResult);
@@ -40,5 +39,5 @@ const styles = StyleSheet.create({
   },
   spacer: {
     margin: 10,
-  }
+  },
 });
